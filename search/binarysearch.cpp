@@ -1,26 +1,25 @@
 #include <iostream>
-#include <algorithm>
+// #include <algorithm>
 using namespace std;
 int search(int a[], int n, int x)
 {
-  int mid;
+
   int lm = 0;
-  int um = n;
-  while (lm <= um)
+  while (lm <= n)
   {
-    mid = lm + um / 2;
+    int mid = lm + (n - lm) / 2;
 
     if (a[mid] == x)
     {
       return mid;
     }
-    else if (a[mid]< x)
+    else if (a[mid] < x)
     {
       lm = mid + 1;
     }
     else
     {
-      um = mid - 1;
+      n = mid - 1;
     }
   }
   return -1;
@@ -61,7 +60,11 @@ int main()
   {
     cin >> arr[i];
   }
-  // sort(arr, arr + size);
+  cout << "\nBefore sort: ";
+  print(arr, size);
+  sort(arr, size);
+  cout << "\nBefore sort: ";
+  print(arr, size);
   cout << "\nEnter the element to search: ";
   cin >> element;
   cout << search(arr, size, element);
